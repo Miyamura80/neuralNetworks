@@ -1,0 +1,28 @@
+    layerNum = int(len(inputNN))
+    inputLayerSize = len(inputNN[0])
+    outputLayerSize = len(inputNN[layerNum - 1])
+    hLayerSize = len(inputNN[1])
+
+    for l in range(layerNum-1):
+        if l == layerNum - 2:
+            wSize = outputLayerSize
+        else:
+            wSize = hLayerSize
+        if l==0:
+            loopCount = inputLayerSize
+        else:
+            loopCount = hLayerSize
+
+        for i in range(loopCount):
+
+            #All weights in input and hidden layer
+            for j in range(1, wSize + 1):
+                k = inputNN[l][i][j].value
+
+            #Biases in hidden layer
+            if l!=0:
+                k = inputNN[l][i][wSize+1]
+
+    #Output layer biases
+    for i in range(outputLayerSize):
+        k = inputNN[layerNum-1][i][1]
